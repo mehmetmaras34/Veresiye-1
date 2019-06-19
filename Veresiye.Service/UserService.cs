@@ -12,7 +12,7 @@ namespace Veresiye.Service
 	{
 		private readonly IUnitOfWork unitOfWork;
 		private readonly IRepository<User> userRepository;
-		public UserService(IUnitOfWork unitOfWork, IRepository<User>userRepository)
+		public UserService(IUnitOfWork unitOfWork, IRepository<User> userRepository)
 		{
 			this.unitOfWork = unitOfWork;
 			this.userRepository = userRepository;
@@ -25,46 +25,47 @@ namespace Veresiye.Service
 		public User Login(string username, string password)
 		{
 			username = username.ToLower();
-			var user = userRepository.Get(x => x.UserName==username && x.Password == password);
+			var user = userRepository.Get(x => x.UserName == username && x.Password == password);
 			return user;
 
 		}
 
-		public bool Register(string userName, string password, string confirmPassword)
+		public RegisterStatus Register(User user)
 		{
-			userName = userName.ToLower();
+			user.UserName = user.UserName.ToLower();
 			//Validasyonlar
-			if (password !=confirmPassword)
+			if (string.IsNullOrEmpty(user.UserName))
 			{
-				return false;
-			}
-			else if (string.IsNullOrEmpty(userName))
-			{
-				return false;
+				return RegisterStatus.InvalidField;
 			}
 			else
 			{
-				var user = userRepository.Get(x => x.UserName == userName);
-				if (user!=null)
+				var newuser = userRepository.Get(x => x.UserName == user.UserName);
+				if (newuser != null)
 				{
-					return false;
+					return RegisterStatus.UserAlreadyExists;
 				}
+				
 
-			}
-
-			var newUser = new User();
-			newUser.UserName = userName;
-			newUser.Password = password;
-			userRepository.Insert(newUser);
+			}			
+			
+			userRepository.Insert(user);
 			unitOfWork.SaveChanges();
-			return true;
+			return RegisterStatus.Success;
 		}
 	}
 
 	public interface IUserService
 	{
 		User Login(string username, string password);
-		bool Register(string UserName, string Password, string ConfirmPassword);
+		RegisterStatus Register(User user);
 		IEnumerable<User> GetAll();
+	}
+
+	public enum RegisterStatus
+	{
+		Success = 1,
+		InvalidField =2,
+		UserAlreadyExists=3
 	}
 }

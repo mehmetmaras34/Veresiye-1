@@ -18,15 +18,18 @@ namespace Veresiye.UI
 		static void Main()
 		{
 			var builder = new ContainerBuilder();
-			builder.RegisterType<ApplicationDbContext>().As<ApplicationDbContext>();
+			builder.RegisterType<ApplicationDbContext>().As<ApplicationDbContext>().SingleInstance(); ;
 
-			builder.RegisterGeneric(typeof(Repository<>)).As(typeof(Data.IRepository<>));
-			builder.RegisterType<UnitOfWork>().As<UnitOfWork>();
+			builder.RegisterGeneric(typeof(Repository<>)).As(typeof(IRepository<>));
+			builder.RegisterType<UnitOfWork>().As<IUnitOfWork>();
 
 			builder.RegisterType<UserService>().As<IUserService>();
 			builder.RegisterType<CompanyService>().As<ICompanyService>();
 			builder.RegisterType<ActivityService>().As<IActivityService>();
+
 			builder.RegisterType<FrmMain>().As<FrmMain>();
+			builder.RegisterType<FrmRegister>().As<FrmRegister>();
+			builder.RegisterType<FrmCompanies>().As<FrmCompanies>();
 
 			var container = builder.Build();
 

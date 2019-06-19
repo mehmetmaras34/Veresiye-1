@@ -49,10 +49,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationDbContext.cs" />
+    <Compile Include="Builders\ActivityBuilder.cs" />
     <Compile Include="Builders\CompanyBuilder.cs" />
     <Compile Include="Builders\UserBuilder.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="IUnitOfWork.cs" />
+    <Compile Include="Migrations\201906190743394_InitialCreate.cs" />
+    <Compile Include="Migrations\201906190743394_InitialCreate.Designer.cs">
+      <DependentUpon>201906190743394_InitialCreate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository.cs" />
@@ -67,6 +72,11 @@
       <Project>{3efd8f9f-4dbb-442e-800c-499b80e7418e}</Project>
       <Name>Veresiye.Model</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201906190743394_InitialCreate.resx">
+      <DependentUpon>201906190743394_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
