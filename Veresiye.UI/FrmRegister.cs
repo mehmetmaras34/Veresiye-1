@@ -15,9 +15,11 @@ namespace Veresiye.UI
 
 	public partial class FrmRegister : Form
 	{
+		private readonly FrmLogin frmLogin;
 		public readonly IUserService userService;
-		public FrmRegister(IUserService userService)
+		public FrmRegister(IUserService userService,FrmLogin frmLogin)
 		{
+			this.frmLogin = frmLogin;
 			this.userService = userService;
 			InitializeComponent();
 		}
@@ -91,6 +93,8 @@ namespace Veresiye.UI
 				case RegisterStatus.Success:
 					MessageBox.Show("Üyelik İşlemi Başarıyla Tamamlandı.");
 					this.Close();
+					frmLogin.Show();
+					
 					break;
 				case RegisterStatus.InvalidField:
 					MessageBox.Show("Kullanıcı Adı Boş Olamaz.");

@@ -62,6 +62,24 @@
     <Compile Include="FrmCompanies.Designer.cs">
       <DependentUpon>FrmCompanies.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmCompanyAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCompanyAdd.Designer.cs">
+      <DependentUpon>FrmCompanyAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCompanyEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCompanyEdit.Designer.cs">
+      <DependentUpon>FrmCompanyEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLogin.Designer.cs">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -78,6 +96,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FrmCompanies.resx">
       <DependentUpon>FrmCompanies.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCompanyAdd.resx">
+      <DependentUpon>FrmCompanyAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCompanyEdit.resx">
+      <DependentUpon>FrmCompanyEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmLogin.resx">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>

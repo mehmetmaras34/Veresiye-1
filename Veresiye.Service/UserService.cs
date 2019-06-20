@@ -60,6 +60,7 @@ namespace Veresiye.Service
 		User Login(string username, string password);
 		RegisterStatus Register(User user);
 		IEnumerable<User> GetAll();
+		
 	}
 
 	public enum RegisterStatus
