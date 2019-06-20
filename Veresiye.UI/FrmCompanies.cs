@@ -45,5 +45,16 @@ namespace Veresiye.UI
 		{
 
 		}
+
+		private void BtnDelete_Click(object sender, EventArgs e)
+		{
+			if (this.dgvCompanies.SelectedRows.Count > 0)
+			{
+				var id = int.Parse(this.dgvCompanies.SelectedRows[0].Cells[0].Value.ToString());
+
+				companyService.Delete(id);
+				LoadCompanies();
+			}
+		}
 	}
 }

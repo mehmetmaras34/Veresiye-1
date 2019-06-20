@@ -32,9 +32,9 @@
 			this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.panel1 = new System.Windows.Forms.Panel();
-			this.btnAdd = new System.Windows.Forms.Button();
-			this.btnEdit = new System.Windows.Forms.Button();
 			this.btnDelete = new System.Windows.Forms.Button();
+			this.btnEdit = new System.Windows.Forms.Button();
+			this.btnAdd = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.dgvCompanies)).BeginInit();
 			this.panel1.SuspendLayout();
 			this.SuspendLayout();
@@ -80,15 +80,15 @@
 			this.panel1.TabIndex = 1;
 			this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel1_Paint);
 			// 
-			// btnAdd
+			// btnDelete
 			// 
-			this.btnAdd.Location = new System.Drawing.Point(90, 13);
-			this.btnAdd.Name = "btnAdd";
-			this.btnAdd.Size = new System.Drawing.Size(75, 23);
-			this.btnAdd.TabIndex = 0;
-			this.btnAdd.Text = "Firma Ekle";
-			this.btnAdd.UseVisualStyleBackColor = true;
-			this.btnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
+			this.btnDelete.Location = new System.Drawing.Point(437, 13);
+			this.btnDelete.Name = "btnDelete";
+			this.btnDelete.Size = new System.Drawing.Size(75, 23);
+			this.btnDelete.TabIndex = 2;
+			this.btnDelete.Text = "Firma Sil";
+			this.btnDelete.UseVisualStyleBackColor = true;
+			this.btnDelete.Click += new System.EventHandler(this.BtnDelete_Click);
 			// 
 			// btnEdit
 			// 
@@ -99,14 +99,15 @@
 			this.btnEdit.Text = "Firma Düzenle";
 			this.btnEdit.UseVisualStyleBackColor = true;
 			// 
-			// btnDelete
+			// btnAdd
 			// 
-			this.btnDelete.Location = new System.Drawing.Point(437, 13);
-			this.btnDelete.Name = "btnDelete";
-			this.btnDelete.Size = new System.Drawing.Size(75, 23);
-			this.btnDelete.TabIndex = 2;
-			this.btnDelete.Text = "Firma Sil";
-			this.btnDelete.UseVisualStyleBackColor = true;
+			this.btnAdd.Location = new System.Drawing.Point(90, 13);
+			this.btnAdd.Name = "btnAdd";
+			this.btnAdd.Size = new System.Drawing.Size(75, 23);
+			this.btnAdd.TabIndex = 0;
+			this.btnAdd.Text = "Firma Ekle";
+			this.btnAdd.UseVisualStyleBackColor = true;
+			this.btnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
 			// 
 			// FrmCompanies
 			// 
