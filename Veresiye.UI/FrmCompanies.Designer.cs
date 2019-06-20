@@ -98,6 +98,7 @@
 			this.btnEdit.TabIndex = 1;
 			this.btnEdit.Text = "Firma Düzenle";
 			this.btnEdit.UseVisualStyleBackColor = true;
+			this.btnEdit.Click += new System.EventHandler(this.BtnEdit_Click);
 			// 
 			// btnAdd
 			// 
