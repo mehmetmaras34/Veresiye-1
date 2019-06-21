@@ -56,6 +56,9 @@ namespace Veresiye.UI
 			frmCompanies.Show();
 		}
 
-		
+		public void ShowRegister()
+		{
+			frmRegister.Show();
+		}
 	}
 }

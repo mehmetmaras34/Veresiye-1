@@ -50,6 +50,8 @@ namespace Veresiye.Service
 			companyRepository.Update(company);
 			unitOfWork.SaveChanges();
 		}
+
+		
 	}
 
 	public interface ICompanyService
@@ -59,5 +61,6 @@ namespace Veresiye.Service
 		void Delete(int id);
 		IEnumerable<Company> GetAll();
 		Company Get(int id);
+		
 	}
 }

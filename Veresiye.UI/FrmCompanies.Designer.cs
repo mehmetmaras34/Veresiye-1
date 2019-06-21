@@ -48,10 +48,10 @@
             this.ID,
             this.Column1});
 			this.dgvCompanies.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.dgvCompanies.Location = new System.Drawing.Point(0, 0);
+			this.dgvCompanies.Location = new System.Drawing.Point(0, 45);
 			this.dgvCompanies.Name = "dgvCompanies";
 			this.dgvCompanies.ReadOnly = true;
-			this.dgvCompanies.Size = new System.Drawing.Size(730, 372);
+			this.dgvCompanies.Size = new System.Drawing.Size(730, 327);
 			this.dgvCompanies.TabIndex = 0;
 			// 
 			// ID
@@ -115,8 +115,8 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(730, 372);
-			this.Controls.Add(this.panel1);
 			this.Controls.Add(this.dgvCompanies);
+			this.Controls.Add(this.panel1);
 			this.Name = "FrmCompanies";
 			this.Text = "FrmCompanies";
 			this.Load += new System.EventHandler(this.FrmCompanies_Load);

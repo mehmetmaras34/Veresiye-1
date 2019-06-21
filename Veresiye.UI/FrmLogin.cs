@@ -16,10 +16,13 @@ namespace Veresiye.UI
 	{
 		public FrmMain MasterForm { get; set; }
 		private readonly IUserService userService;
+		
 		public FrmLogin(IUserService userService)
 		{
+			
 			this.userService = userService;
 			InitializeComponent();
+			
 		}
 
 		private void BtnLogin_Click(object sender, EventArgs e)
@@ -52,6 +55,8 @@ namespace Veresiye.UI
 		
 		}
 
-		
+		private void BtnSignIn_Click(object sender, EventArgs e)
+		{
+			this.MasterForm.ShowRegister();		}
 	}
 }

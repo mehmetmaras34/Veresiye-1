@@ -13,12 +13,13 @@ namespace Veresiye.UI
 {
 	public partial class FrmCompanies : Form
 	{
-		public int dgvSelectedCompanyId;
+		
 		private readonly FrmCompanyEdit frmCompanyEdit;
 		private readonly FrmCompanyAdd frmCompanyAdd;
 		private readonly ICompanyService companyService;
-		public FrmCompanies(ICompanyService companyService ,FrmCompanyEdit frmCompanyEdit, FrmCompanyAdd frmCompanyAdd)
+		public FrmCompanies(ICompanyService companyService, FrmCompanyEdit frmCompanyEdit, FrmCompanyAdd frmCompanyAdd)
 		{
+			
 			this.frmCompanyEdit = frmCompanyEdit;
 			this.frmCompanyAdd = frmCompanyAdd;
 			this.companyService = companyService;
@@ -27,14 +28,13 @@ namespace Veresiye.UI
 			this.frmCompanyAdd.MasterForm = this;
 			this.frmCompanyEdit.MdiParent = this.MdiParent;
 			this.frmCompanyEdit.MasterForm = this;
-			
 		}
-
+		
 		private void FrmCompanies_Load(object sender, EventArgs e)
 		{
 			LoadCompanies();
 		}
-		public void	LoadCompanies()
+		public void LoadCompanies()
 		{
 			var companies = companyService.GetAll();
 			this.dgvCompanies.AutoGenerateColumns = false;
@@ -44,6 +44,7 @@ namespace Veresiye.UI
 		private void BtnAdd_Click(object sender, EventArgs e)
 		{
 			frmCompanyAdd.Show();
+			frmCompanyAdd.LoadForm();
 		}
 
 		private void Panel1_Paint(object sender, PaintEventArgs e)
@@ -53,12 +54,23 @@ namespace Veresiye.UI
 
 		private void BtnDelete_Click(object sender, EventArgs e)
 		{
+			
 			if (this.dgvCompanies.SelectedRows.Count > 0)
 			{
-				var id = int.Parse(this.dgvCompanies.SelectedRows[0].Cells[0].Value.ToString());
-
-				companyService.Delete(id);
-				LoadCompanies();
+				var result = MessageBox.Show("Bu Kaydı Silmek İstediğinize Emin Misiniz ? ", "Kaydı Silme İşlemi ", MessageBoxButtons.YesNo);
+				
+				
+				if (result==DialogResult.Yes)
+				{
+					var id = int.Parse(this.dgvCompanies.SelectedRows[0].Cells[0].Value.ToString());
+					companyService.Delete(id);
+					LoadCompanies();
+				}
+				
+			}
+			else
+			{
+				MessageBox.Show("Silmek İstediğiniz Kaydı Seçiniz");
 			}
 		}
 
@@ -66,10 +78,15 @@ namespace Veresiye.UI
 		{
 			if (this.dgvCompanies.SelectedRows.Count > 0)
 			{
-				 dgvSelectedCompanyId = int.Parse(this.dgvCompanies.SelectedRows[0].Cells[0].Value.ToString());
-								
+			int	dgvSelectedCompanyId = int.Parse(this.dgvCompanies.SelectedRows[0].Cells[0].Value.ToString());
+				frmCompanyEdit.Show();
+				frmCompanyEdit.LoadForm(dgvSelectedCompanyId);
 			}
-			frmCompanyEdit.Show();
+			else
+			{
+				MessageBox.Show("Lütfen Güncellemek İstediğiniz Kaydı Seçin");
+			}
+			
 		}
 	}
 }

@@ -14,29 +14,49 @@ namespace Veresiye.UI
 {
 	public partial class FrmCompanyEdit : Form
 	{
+		private readonly FrmActivityAdd frmActivityAdd;
+		private readonly IActivityService activityService;
 		private readonly ICompanyService companyService;
+
 		public FrmCompanies MasterForm { get; set; }
-		public FrmCompanyEdit(ICompanyService companyService)
+		public FrmCompanyEdit(ICompanyService companyService,FrmActivityAdd frmActivityAdd , IActivityService activityService)
 		{
+			this.frmActivityAdd = frmActivityAdd;
+			this.activityService = activityService;
 			this.companyService = companyService;
 			InitializeComponent();
+			frmActivityAdd.MdiParent = this.MdiParent;
+			frmActivityAdd.MasterForm = this;
 		}
 
 		private void FrmCompanyEdit_Load(object sender, EventArgs e)
 		{
-			var dgvSelectedCompanyId = MasterForm.dgvSelectedCompanyId;
-			var company = companyService.Get(dgvSelectedCompanyId);
+			 
+			
+			
+		}
+
+		private  int id;
+		public void LoadForm(int Id)
+		{
+			this.id = Id;			
+			var company = companyService.Get(id);
 			txtCompanyName.Text = company.Name;
 			txtPhone.Text = company.Phone;
 			txtCity.Text = company.City;
 			txtRegion.Text = company.Region;
-			
+			LoadActivities();
+		}
 
+		public void LoadActivities()
+		{
+			this.dgvActivity.AutoGenerateColumns = false;
+			this.dgvActivity.DataSource = activityService.GetAllByCompanyId(this.id);
 		}
 
 		private void BtnQuit_Click(object sender, EventArgs e)
 		{
-			this.Close();
+			this.Hide();
 		}
 
 		private void BtnSave_Click(object sender, EventArgs e)
@@ -61,8 +81,8 @@ namespace Veresiye.UI
 				MessageBox.Show("Bölge Girmediniz");
 				return;
 			}
-			var dgvSelectedCompanyId = MasterForm.dgvSelectedCompanyId;
-			var company = companyService.Get(dgvSelectedCompanyId);
+			;
+			var company = companyService.Get(this.id);
 			company.Name = txtCompanyName.Text;
 			company.Phone = txtPhone.Text;
 			company.City = txtCity.Text;
@@ -75,6 +95,26 @@ namespace Veresiye.UI
 			
 			
 
+		}
+
+		private void ShowActivity ()
+		{
+			frmActivityAdd.Show();
+		}
+		private void FrmCompanyEdit_FormClosing(object sender, FormClosingEventArgs e)
+		{
+			e.Cancel = true;
+			this.Hide();
+		}
+
+		private void BtnEditActivity_Click(object sender, EventArgs e)
+		{
+			
+		}
+
+		private void BtnAddActivity_Click(object sender, EventArgs e)
+		{
+			ShowActivity();
 		}
 	}
 }
