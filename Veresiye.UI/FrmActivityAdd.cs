@@ -15,7 +15,7 @@ namespace Veresiye.UI
 
 	public partial class FrmActivityAdd : Form
 	{
-		private readonly int CompanyId;
+		
 		private readonly IActivityService activityService;
 		public FrmCompanyEdit MasterForm { get; set; }
 		public FrmActivityAdd(IActivityService activityService)
@@ -29,13 +29,15 @@ namespace Veresiye.UI
 
 		}
 
-		public void LoadForm(int companyid)
-		{
-			this.CompanyId = companyid;
+	
+		public void LoadForm()
+		{			
 			this.txtName.Clear();
 			this.txtAmount.Clear();
+			this.cmbActivityType.SelectedIndex = -1;
 
 		}
+		private int CompanyId;
 		private void BtnAdd_Click(object sender, EventArgs e)
 		{
 			var activity = new Activity();
@@ -58,10 +60,24 @@ namespace Veresiye.UI
 			{
 				activity.ActivityType = ActivityType.Collection;
 			}
-
+			activity.CompanyId = MasterForm.SendId(CompanyId);
 			activityService.Insert(activity);
 			MasterForm.LoadActivities();
 
+		}
+
+		private void BtnQuit_Click(object sender, EventArgs e)
+		{
+			this.Hide();
+			LoadForm();
+		}
+
+		private void FrmActivityAdd_FormClosing(object sender, FormClosingEventArgs e)
+		{
+			e.Cancel = true;
+			LoadForm();
+			this.Hide();
+			
 		}
 	}
 }

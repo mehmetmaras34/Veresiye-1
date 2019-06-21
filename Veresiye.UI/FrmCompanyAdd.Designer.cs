@@ -48,6 +48,7 @@
 			this.label1.Size = new System.Drawing.Size(56, 13);
 			this.label1.TabIndex = 0;
 			this.label1.Text = "Firma Adı :";
+			
 			// 
 			// label2
 			// 
@@ -57,6 +58,7 @@
 			this.label2.Size = new System.Drawing.Size(49, 13);
 			this.label2.TabIndex = 1;
 			this.label2.Text = "Telefon :";
+			
 			// 
 			// label3
 			// 
@@ -66,6 +68,7 @@
 			this.label3.Size = new System.Drawing.Size(37, 13);
 			this.label3.TabIndex = 2;
 			this.label3.Text = "Şehir :";
+			
 			// 
 			// label4
 			// 
@@ -75,6 +78,7 @@
 			this.label4.Size = new System.Drawing.Size(40, 13);
 			this.label4.TabIndex = 3;
 			this.label4.Text = "Bölge :";
+			
 			// 
 			// btnSave
 			// 
@@ -92,6 +96,7 @@
 			this.txtCompanyName.Name = "txtCompanyName";
 			this.txtCompanyName.Size = new System.Drawing.Size(163, 20);
 			this.txtCompanyName.TabIndex = 5;
+			
 			// 
 			// txtPhone
 			// 
@@ -99,6 +104,7 @@
 			this.txtPhone.Name = "txtPhone";
 			this.txtPhone.Size = new System.Drawing.Size(163, 20);
 			this.txtPhone.TabIndex = 6;
+		
 			// 
 			// txtCity
 			// 
@@ -106,6 +112,7 @@
 			this.txtCity.Name = "txtCity";
 			this.txtCity.Size = new System.Drawing.Size(163, 20);
 			this.txtCity.TabIndex = 7;
+		
 			// 
 			// txtRegion
 			// 
@@ -113,6 +120,7 @@
 			this.txtRegion.Name = "txtRegion";
 			this.txtRegion.Size = new System.Drawing.Size(163, 20);
 			this.txtRegion.TabIndex = 8;
+			
 			// 
 			// btnQuit
 			// 

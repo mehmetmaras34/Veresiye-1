@@ -62,6 +62,12 @@
     <Compile Include="FrmActivityAdd.Designer.cs">
       <DependentUpon>FrmActivityAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmActivityEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmActivityEdit.Designer.cs">
+      <DependentUpon>FrmActivityEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmCompanies.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,6 +108,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FrmActivityAdd.resx">
       <DependentUpon>FrmActivityAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmActivityEdit.resx">
+      <DependentUpon>FrmActivityEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmCompanies.resx">
       <DependentUpon>FrmCompanies.cs</DependentUpon>

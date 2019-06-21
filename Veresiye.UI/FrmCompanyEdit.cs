@@ -14,19 +14,23 @@ namespace Veresiye.UI
 {
 	public partial class FrmCompanyEdit : Form
 	{
+		private readonly FrmActivityEdit frmActivityEdit;
 		private readonly FrmActivityAdd frmActivityAdd;
 		private readonly IActivityService activityService;
 		private readonly ICompanyService companyService;
 
 		public FrmCompanies MasterForm { get; set; }
-		public FrmCompanyEdit(ICompanyService companyService,FrmActivityAdd frmActivityAdd , IActivityService activityService)
+		public FrmCompanyEdit(ICompanyService companyService,FrmActivityEdit frmActivityEdit ,FrmActivityAdd frmActivityAdd , IActivityService activityService)
 		{
+			this.frmActivityEdit = frmActivityEdit;
 			this.frmActivityAdd = frmActivityAdd;
 			this.activityService = activityService;
 			this.companyService = companyService;
 			InitializeComponent();
 			frmActivityAdd.MdiParent = this.MdiParent;
 			frmActivityAdd.MasterForm = this;
+			frmActivityEdit.MdiParent = this.MdiParent;
+			frmActivityEdit.MasterForm = this;
 		}
 
 		private void FrmCompanyEdit_Load(object sender, EventArgs e)
@@ -96,11 +100,12 @@ namespace Veresiye.UI
 			
 
 		}
-
-		private void ShowActivity ()
+		public int SendId(int companyid)
 		{
-			frmActivityAdd.Show();
+			companyid = this.id;
+			return companyid;
 		}
+	
 		private void FrmCompanyEdit_FormClosing(object sender, FormClosingEventArgs e)
 		{
 			e.Cancel = true;
@@ -109,12 +114,22 @@ namespace Veresiye.UI
 
 		private void BtnEditActivity_Click(object sender, EventArgs e)
 		{
-			
+			frmActivityEdit.Show();
 		}
 
 		private void BtnAddActivity_Click(object sender, EventArgs e)
 		{
-			ShowActivity();
+			frmActivityAdd.Show();
+		}
+
+		private void BtnDeleteActivity_Click(object sender, EventArgs e)
+		{
+			if (this.dgvActivity.SelectedRows.Count>0)
+			{
+				var activityid = int.Parse(this.dgvActivity.SelectedRows[0].Cells[0].Value.ToString());
+				activityService.Delete(activityid);
+				LoadActivities();
+			}
 		}
 	}
 }

@@ -83,6 +83,8 @@ namespace Veresiye.UI
 			txtCity.Clear();
 			txtRegion.Clear();
 		}
+
+		
 	}
 }
 

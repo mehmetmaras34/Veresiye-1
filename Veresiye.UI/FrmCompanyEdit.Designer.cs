@@ -39,10 +39,10 @@
 			this.label2 = new System.Windows.Forms.Label();
 			this.label1 = new System.Windows.Forms.Label();
 			this.panel1 = new System.Windows.Forms.Panel();
-			this.dgvActivity = new System.Windows.Forms.DataGridView();
-			this.btnAddActivity = new System.Windows.Forms.Button();
-			this.btnEditActivity = new System.Windows.Forms.Button();
 			this.btnDeleteActivity = new System.Windows.Forms.Button();
+			this.btnEditActivity = new System.Windows.Forms.Button();
+			this.btnAddActivity = new System.Windows.Forms.Button();
+			this.dgvActivity = new System.Windows.Forms.DataGridView();
 			this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -157,6 +157,36 @@
 			this.panel1.Size = new System.Drawing.Size(669, 132);
 			this.panel1.TabIndex = 20;
 			// 
+			// btnDeleteActivity
+			// 
+			this.btnDeleteActivity.Location = new System.Drawing.Point(345, 95);
+			this.btnDeleteActivity.Name = "btnDeleteActivity";
+			this.btnDeleteActivity.Size = new System.Drawing.Size(75, 23);
+			this.btnDeleteActivity.TabIndex = 22;
+			this.btnDeleteActivity.Text = "Sil";
+			this.btnDeleteActivity.UseVisualStyleBackColor = true;
+			this.btnDeleteActivity.Click += new System.EventHandler(this.BtnDeleteActivity_Click);
+			// 
+			// btnEditActivity
+			// 
+			this.btnEditActivity.Location = new System.Drawing.Point(195, 95);
+			this.btnEditActivity.Name = "btnEditActivity";
+			this.btnEditActivity.Size = new System.Drawing.Size(75, 23);
+			this.btnEditActivity.TabIndex = 21;
+			this.btnEditActivity.Text = "Düzenle";
+			this.btnEditActivity.UseVisualStyleBackColor = true;
+			this.btnEditActivity.Click += new System.EventHandler(this.BtnEditActivity_Click);
+			// 
+			// btnAddActivity
+			// 
+			this.btnAddActivity.Location = new System.Drawing.Point(49, 96);
+			this.btnAddActivity.Name = "btnAddActivity";
+			this.btnAddActivity.Size = new System.Drawing.Size(75, 23);
+			this.btnAddActivity.TabIndex = 20;
+			this.btnAddActivity.Text = "Yeni İşlem";
+			this.btnAddActivity.UseVisualStyleBackColor = true;
+			this.btnAddActivity.Click += new System.EventHandler(this.BtnAddActivity_Click);
+			// 
 			// dgvActivity
 			// 
 			this.dgvActivity.AllowUserToAddRows = false;
@@ -174,35 +204,6 @@
 			this.dgvActivity.ReadOnly = true;
 			this.dgvActivity.Size = new System.Drawing.Size(669, 239);
 			this.dgvActivity.TabIndex = 21;
-			// 
-			// btnAddActivity
-			// 
-			this.btnAddActivity.Location = new System.Drawing.Point(49, 96);
-			this.btnAddActivity.Name = "btnAddActivity";
-			this.btnAddActivity.Size = new System.Drawing.Size(75, 23);
-			this.btnAddActivity.TabIndex = 20;
-			this.btnAddActivity.Text = "Yeni İşlem";
-			this.btnAddActivity.UseVisualStyleBackColor = true;
-			this.btnAddActivity.Click += new System.EventHandler(this.BtnAddActivity_Click);
-			// 
-			// btnEditActivity
-			// 
-			this.btnEditActivity.Location = new System.Drawing.Point(195, 95);
-			this.btnEditActivity.Name = "btnEditActivity";
-			this.btnEditActivity.Size = new System.Drawing.Size(75, 23);
-			this.btnEditActivity.TabIndex = 21;
-			this.btnEditActivity.Text = "Düzenle";
-			this.btnEditActivity.UseVisualStyleBackColor = true;
-			this.btnEditActivity.Click += new System.EventHandler(this.BtnEditActivity_Click);
-			// 
-			// btnDeleteActivity
-			// 
-			this.btnDeleteActivity.Location = new System.Drawing.Point(345, 95);
-			this.btnDeleteActivity.Name = "btnDeleteActivity";
-			this.btnDeleteActivity.Size = new System.Drawing.Size(75, 23);
-			this.btnDeleteActivity.TabIndex = 22;
-			this.btnDeleteActivity.Text = "Sil";
-			this.btnDeleteActivity.UseVisualStyleBackColor = true;
 			// 
 			// Column1
 			// 

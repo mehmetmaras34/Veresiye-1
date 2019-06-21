@@ -115,6 +115,7 @@
 			this.btnQuit.TabIndex = 10;
 			this.btnQuit.Text = "Kapat";
 			this.btnQuit.UseVisualStyleBackColor = true;
+			this.btnQuit.Click += new System.EventHandler(this.BtnQuit_Click);
 			// 
 			// cmbActivityType
 			// 
@@ -146,6 +147,7 @@
 			this.Controls.Add(this.btnAdd);
 			this.Name = "FrmActivityAdd";
 			this.Text = "FrmActivityAdd";
+			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmActivityAdd_FormClosing);
 			this.Load += new System.EventHandler(this.FrmActivityAdd_Load);
 			this.ResumeLayout(false);
 			this.PerformLayout();
