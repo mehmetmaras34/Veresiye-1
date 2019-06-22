@@ -60,7 +60,7 @@ namespace Veresiye.UI
 			{
 				activity.ActivityType = ActivityType.Collection;
 			}
-			activity.CompanyId = MasterForm.SendId(CompanyId);
+			activity.CompanyId = MasterForm.SendId();
 			activityService.Insert(activity);
 			MasterForm.LoadActivities();
 

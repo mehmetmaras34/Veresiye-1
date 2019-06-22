@@ -13,11 +13,13 @@ namespace Veresiye.Data
 	{
 		private readonly ApplicationDbContext db;
 		private readonly DbSet<T> entities;
+
 		public Repository(ApplicationDbContext context)
 		{
 			this.db = context;
 			this.entities = context.Set<T>();
 		}
+
 
 		public void Delete(T entity)
 		{
@@ -26,7 +28,28 @@ namespace Veresiye.Data
 
 		public T Get(int id)
 		{
-			return entities.FirstOrDefault(x => x.Id == id);
+			// company id == 3; //activity id==3; activity.id == 3 => null
+
+			Type typeOfEntity = typeof(T);
+
+			if (typeOfEntity == typeof(Activity))
+			{
+				var getEntity = db.Activities.FirstOrDefault(a => a.CompanyId == id ) as T;
+				return getEntity;
+			}
+
+			if(typeOfEntity == typeof(Company))
+			{
+				var getEntity = db.Companies.FirstOrDefault(c => c.Id == id) as T;
+				return getEntity;
+			}
+
+			return null;
+		}
+
+		public T GetActivity(int id)
+		{
+			return db.Activities.FirstOrDefault(a => a.Id == id) as T;
 		}
 
 		public T Get(Expression<Func<T, bool>> where)

@@ -16,6 +16,7 @@ namespace Veresiye.UI
 	{
 		public FrmCompanyEdit MasterForm { get; set; }
 		private readonly IActivityService activityService;
+
 		public FrmActivityEdit(IActivityService activityService)
 		{
 			this.activityService = activityService;
@@ -30,43 +31,59 @@ namespace Veresiye.UI
 		private void FrmActivityEdit_FormClosing(object sender, FormClosingEventArgs e)
 		{
 			e.Cancel = true;
-			
+
 			this.Hide();
 		}
 
-		public int CompanyId;
+		//public int CompanyId;
 		private void FrmActivityEdit_Load(object sender, EventArgs e)
 		{
-			var companyid = MasterForm.SendId(CompanyId);
-			var activity = activityService.Get(companyid);
-			txtName.Text = activity.Name;
-			txtAmount.Text = activity.Amount.ToString();
-			dtpDate.Value = activity.TransactionDate;
-			if (activity.ActivityType == ActivityType.Dept)
-			{
-				cmbActivityType.SelectedIndex = 0;
-			}
-			else if (activity.ActivityType == ActivityType.Payment)
-			{
-				cmbActivityType.SelectedIndex = 1;
-
-			}
-			else if (activity.ActivityType == ActivityType.Credit)
-			{
-				cmbActivityType.SelectedIndex = 2;
-
-			}
-			else if (activity.ActivityType == ActivityType.Collection)
-			{
-				cmbActivityType.SelectedIndex = 3;
-			}
-				 
-
+			
 		}
+		
+		
+		
+		private int id;
+		public void LoadActivityEdit(int id)
+		{
+			this.id = id;
+			var companyid = MasterForm.SendId();
+			var activity = activityService.GetActivity(id); // ACTİVİTY ID İLE CAGIR . COMPANY ID İLE CAGIRINCA FİRST OR DEFAULT KULLANDIGIN İÇİN İLK KAYDI GETİRİYOR
 
+			if (activity != null)
+			{
+				txtName.Text = activity.Name;
+				txtAmount.Text = activity.Amount.ToString();
+				dtpDate.Value = activity.TransactionDate;
+
+				if (activity.ActivityType == ActivityType.Dept)
+				{
+					cmbActivityType.SelectedIndex = 0;
+				}
+				else if (activity.ActivityType == ActivityType.Payment)
+				{
+					cmbActivityType.SelectedIndex = 1;
+
+				}
+				else if (activity.ActivityType == ActivityType.Credit)
+				{
+					cmbActivityType.SelectedIndex = 2;
+
+				}
+				else if (activity.ActivityType == ActivityType.Collection)
+				{
+					cmbActivityType.SelectedIndex = 3;
+				}
+			}
+
+			else
+			{
+				MessageBox.Show("Olmaz gülüm.");
+			}
+		}
 		private void BtnSave_Click(object sender, EventArgs e)
 		{
-			var companyid = MasterForm.SendId(CompanyId);
+			var companyid = MasterForm.SendId();
 			var activity = activityService.Get(companyid);
 			activity.Name = txtName.Text;
 			activity.Amount = decimal.Parse(txtAmount.Text);
@@ -87,7 +104,7 @@ namespace Veresiye.UI
 			{
 				activity.ActivityType = ActivityType.Collection;
 			}
-			activity.CompanyId = MasterForm.SendId(CompanyId);
+			activity.CompanyId = MasterForm.SendId();
 			activityService.Update(activity);
 			MasterForm.LoadActivities();
 		}

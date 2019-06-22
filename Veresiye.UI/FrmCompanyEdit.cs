@@ -35,8 +35,7 @@ namespace Veresiye.UI
 
 		private void FrmCompanyEdit_Load(object sender, EventArgs e)
 		{
-			 
-			
+			 		
 			
 		}
 
@@ -100,10 +99,9 @@ namespace Veresiye.UI
 			
 
 		}
-		public int SendId(int companyid)
+		public int SendId()
 		{
-			companyid = this.id;
-			return companyid;
+			return this.id;
 		}
 	
 		private void FrmCompanyEdit_FormClosing(object sender, FormClosingEventArgs e)
@@ -114,7 +112,16 @@ namespace Veresiye.UI
 
 		private void BtnEditActivity_Click(object sender, EventArgs e)
 		{
-			frmActivityEdit.Show();
+			if (this.dgvActivity.SelectedRows.Count > 0)
+			{
+				int dgvSelectedActivityId = int.Parse(this.dgvActivity.SelectedRows[0].Cells[0].Value.ToString());
+				frmActivityEdit.Show();
+				frmActivityEdit.LoadActivityEdit(dgvSelectedActivityId);
+			}
+			else
+			{
+				MessageBox.Show("Lütfen Güncellemek İstediğiniz Kaydı Seçin");
+			}
 		}
 
 		private void BtnAddActivity_Click(object sender, EventArgs e)

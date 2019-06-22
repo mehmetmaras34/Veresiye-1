@@ -19,14 +19,15 @@ namespace Veresiye.Service
 		}
 		public void Delete(int id)
 		{
-			var activity = activityRepository.Get(id);
+			var activity = activityRepository.GetActivity(id);
 			activityRepository.Delete(activity);
 			unitOfWork.SaveChanges();
 		}
 
-		public Activity Get(int id)
+		public Activity Get(int id )
 		{
-			return activityRepository.Get(id);
+			var getActivity = activityRepository.Get(id);
+			return getActivity;
 		}
 
 		public IEnumerable<Activity> GetAll()
@@ -49,6 +50,11 @@ namespace Veresiye.Service
 		{
 			return activityRepository.GetAll(x => x.CompanyId == companyId);
 		}
+
+		public Activity GetActivity(int id)
+		{
+			return activityRepository.GetActivity(id);
+		}
 	}
 
 	public interface IActivityService
@@ -59,5 +65,6 @@ namespace Veresiye.Service
 		IEnumerable<Activity> GetAll();
 		Activity Get(int id);
 		IEnumerable<Activity> GetAllByCompanyId(int CompanyId);
+		Activity GetActivity(int id);
 	}
 }

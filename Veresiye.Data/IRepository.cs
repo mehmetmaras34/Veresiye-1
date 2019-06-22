@@ -17,6 +17,6 @@ namespace Veresiye.Data
 		IEnumerable<T> GetAll();
 		T Get(Expression<Func<T, bool>> where);
 		IEnumerable<T> GetAll(Expression<Func<T, bool>> where);
-
+		 T GetActivity(int id);
 	}
 }

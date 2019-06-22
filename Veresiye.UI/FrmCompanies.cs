@@ -89,15 +89,15 @@ namespace Veresiye.UI
 			
 		}
 
-		public int SendCompanyId(int id)
-		{
+		//public int SendCompanyId(int id)
+		//{
 			 
-			if (this.dgvCompanies.SelectedRows.Count>0)
-			{
-			int	SelectedCompanyId = int.Parse(this.dgvCompanies.SelectedRows[0].Cells[0].Value.ToString());
-				id = SelectedCompanyId;
-			}
-			return id;
-		}
+		//	if (this.dgvCompanies.SelectedRows.Count>0)
+		//	{
+		//	int	SelectedCompanyId = int.Parse(this.dgvCompanies.SelectedRows[0].Cells[0].Value.ToString());
+		//		id = SelectedCompanyId;
+		//	}
+		//	return id;
+		//}
 	}
 }
