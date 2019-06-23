@@ -28,16 +28,14 @@ namespace Veresiye.UI
 		{
 
 		}
-
-	
+		
 		public void LoadForm()
 		{			
 			this.txtName.Clear();
 			this.txtAmount.Clear();
 			this.cmbActivityType.SelectedIndex = -1;
-
 		}
-		private int CompanyId;
+		
 		private void BtnAdd_Click(object sender, EventArgs e)
 		{
 			var activity = new Activity();
@@ -63,22 +61,21 @@ namespace Veresiye.UI
 			activity.CompanyId = MasterForm.SendId();
 			activityService.Insert(activity);
 			MasterForm.LoadActivities();
-
+			MessageBox.Show("Kayıt Başarıyla Eklendi");
 		}
-
+		
+		private void FrmActivityAdd_FormClosing(object sender, FormClosingEventArgs e)
+		{
+			e.Cancel = true;
+			LoadForm();
+			this.Hide();		
+		}
 		private void BtnQuit_Click(object sender, EventArgs e)
 		{
 			this.Hide();
 			LoadForm();
 		}
 
-		private void FrmActivityAdd_FormClosing(object sender, FormClosingEventArgs e)
-		{
-			e.Cancel = true;
-			LoadForm();
-			this.Hide();
-			
-		}
 	}
 }
 

@@ -176,7 +176,7 @@
 			this.btnQuit.TabIndex = 15;
 			this.btnQuit.Text = "Kapat";
 			this.btnQuit.UseVisualStyleBackColor = true;
-			this.btnQuit.Click += new System.EventHandler(this.Button2_Click);
+			this.btnQuit.Click += new System.EventHandler(this.btnQuit_Click);
 			// 
 			// FrmRegister
 			// 
@@ -202,6 +202,7 @@
 			this.Name = "FrmRegister";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Üyelik İşlemleri";
+			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmRegister_FormClosing);
 			this.Load += new System.EventHandler(this.FrmRegister_Load);
 			this.ResumeLayout(false);
 			this.PerformLayout();

@@ -22,26 +22,10 @@ namespace Veresiye.UI
 			this.activityService = activityService;
 			InitializeComponent();
 		}
-
-		private void BtnQuit_Click(object sender, EventArgs e)
-		{
-			this.Hide();
-		}
-
-		private void FrmActivityEdit_FormClosing(object sender, FormClosingEventArgs e)
-		{
-			e.Cancel = true;
-
-			this.Hide();
-		}
-
-		//public int CompanyId;
 		private void FrmActivityEdit_Load(object sender, EventArgs e)
 		{
-			
+
 		}
-		
-		
 		
 		private int id;
 		public void LoadActivityEdit(int id)
@@ -78,7 +62,7 @@ namespace Veresiye.UI
 
 			else
 			{
-				MessageBox.Show("Olmaz gülüm.");
+				MessageBox.Show("Seçilen İşlem Bulunamadı");
 			}
 		}
 		private void BtnSave_Click(object sender, EventArgs e)
@@ -107,6 +91,18 @@ namespace Veresiye.UI
 			activity.CompanyId = MasterForm.SendId();
 			activityService.Update(activity);
 			MasterForm.LoadActivities();
+			MessageBox.Show("Kayıt Başarıyla Güncellendi");
 		}
+		private void FrmActivityEdit_FormClosing(object sender, FormClosingEventArgs e)
+		{
+			e.Cancel = true;
+
+			this.Hide();
+		}
+		private void BtnQuit_Click(object sender, EventArgs e)
+		{
+			this.Hide();
+		}
+
 	}
 }

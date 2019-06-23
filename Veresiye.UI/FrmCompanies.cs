@@ -18,8 +18,7 @@ namespace Veresiye.UI
 		private readonly FrmCompanyAdd frmCompanyAdd;
 		private readonly ICompanyService companyService;
 		public FrmCompanies(ICompanyService companyService, FrmCompanyEdit frmCompanyEdit, FrmCompanyAdd frmCompanyAdd)
-		{
-			
+		{			
 			this.frmCompanyEdit = frmCompanyEdit;
 			this.frmCompanyAdd = frmCompanyAdd;
 			this.companyService = companyService;
@@ -46,19 +45,25 @@ namespace Veresiye.UI
 			frmCompanyAdd.Show();
 			frmCompanyAdd.LoadForm();
 		}
-
-		private void Panel1_Paint(object sender, PaintEventArgs e)
+		private void BtnEdit_Click(object sender, EventArgs e)
 		{
-
-		}
-
-		private void BtnDelete_Click(object sender, EventArgs e)
-		{
-			
 			if (this.dgvCompanies.SelectedRows.Count > 0)
 			{
-				var result = MessageBox.Show("Bu Kaydı Silmek İstediğinize Emin Misiniz ? ", "Kaydı Silme İşlemi ", MessageBoxButtons.YesNo);
-				
+				int dgvSelectedCompanyId = int.Parse(this.dgvCompanies.SelectedRows[0].Cells[0].Value.ToString());
+				frmCompanyEdit.Show();
+				frmCompanyEdit.LoadForm(dgvSelectedCompanyId);
+			}
+			else
+			{
+				MessageBox.Show("Lütfen Güncellemek İstediğiniz Kaydı Seçin");
+			}
+
+		}
+		private void BtnDelete_Click(object sender, EventArgs e)
+		{			
+			if (this.dgvCompanies.SelectedRows.Count > 0)
+			{
+				var result = MessageBox.Show("Bu Kaydı Silmek İstediğinize Emin Misiniz ? ", "Kaydı Silme İşlemi ", MessageBoxButtons.YesNo);				
 				
 				if (result==DialogResult.Yes)
 				{
@@ -73,31 +78,5 @@ namespace Veresiye.UI
 				MessageBox.Show("Silmek İstediğiniz Kaydı Seçiniz");
 			}
 		}
-
-		private void BtnEdit_Click(object sender, EventArgs e)
-		{
-			if (this.dgvCompanies.SelectedRows.Count > 0)
-			{
-			int	dgvSelectedCompanyId = int.Parse(this.dgvCompanies.SelectedRows[0].Cells[0].Value.ToString());
-				frmCompanyEdit.Show();
-				frmCompanyEdit.LoadForm(dgvSelectedCompanyId);
-			}
-			else
-			{
-				MessageBox.Show("Lütfen Güncellemek İstediğiniz Kaydı Seçin");
-			}
-			
-		}
-
-		//public int SendCompanyId(int id)
-		//{
-			 
-		//	if (this.dgvCompanies.SelectedRows.Count>0)
-		//	{
-		//	int	SelectedCompanyId = int.Parse(this.dgvCompanies.SelectedRows[0].Cells[0].Value.ToString());
-		//		id = SelectedCompanyId;
-		//	}
-		//	return id;
-		//}
 	}
 }

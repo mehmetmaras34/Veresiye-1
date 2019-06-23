@@ -18,11 +18,14 @@ namespace Veresiye.UI
 		private readonly IUserService userService;
 		
 		public FrmLogin(IUserService userService)
-		{
-			
+		{			
 			this.userService = userService;
-			InitializeComponent();
-			
+			InitializeComponent();			
+		}
+
+		private void FrmLogin_Load(object sender, EventArgs e)
+		{
+
 		}
 
 		private void BtnLogin_Click(object sender, EventArgs e)
@@ -49,14 +52,15 @@ namespace Veresiye.UI
 			}else
 			{
 				MessageBox.Show("Giriş İşlemi Başarılı Değil");
-			}
-			
-				
+			}				
 		
 		}
 
 		private void BtnSignIn_Click(object sender, EventArgs e)
 		{
-			this.MasterForm.ShowRegister();		}
+			this.MasterForm.ShowRegister();
+		}
+
+		
 	}
 }

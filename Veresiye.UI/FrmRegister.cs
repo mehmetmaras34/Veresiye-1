@@ -24,16 +24,11 @@ namespace Veresiye.UI
 			InitializeComponent();
 		}
 
-		private void Button2_Click(object sender, EventArgs e)
-		{
-			this.Close();
-		}
-
 		private void FrmRegister_Load(object sender, EventArgs e)
 		{
 
 		}
-
+		
 		private void BtnSignIn_Click(object sender, EventArgs e)
 		{
 			if (string.IsNullOrEmpty(txtUserName.Text))
@@ -108,6 +103,16 @@ namespace Veresiye.UI
 			}
 
 		}
-		
+
+		private void FrmRegister_FormClosing(object sender, FormClosingEventArgs e)
+		{
+			e.Cancel = true;
+			this.Hide();
+		}
+
+		private void btnQuit_Click(object sender, EventArgs e)
+		{
+			this.Hide();
+		}
 	}
 }

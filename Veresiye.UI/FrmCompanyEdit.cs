@@ -34,8 +34,7 @@ namespace Veresiye.UI
 		}
 
 		private void FrmCompanyEdit_Load(object sender, EventArgs e)
-		{
-			 		
+		{			 		
 			
 		}
 
@@ -55,12 +54,7 @@ namespace Veresiye.UI
 		{
 			this.dgvActivity.AutoGenerateColumns = false;
 			this.dgvActivity.DataSource = activityService.GetAllByCompanyId(this.id);
-		}
-
-		private void BtnQuit_Click(object sender, EventArgs e)
-		{
-			this.Hide();
-		}
+		}		
 
 		private void BtnSave_Click(object sender, EventArgs e)
 		{
@@ -90,15 +84,11 @@ namespace Veresiye.UI
 			company.Phone = txtPhone.Text;
 			company.City = txtCity.Text;
 			company.Region = txtRegion.Text;
-
 			companyService.Update(company);
-
 			MessageBox.Show("Firma Başarıyla Güncellendi");
-			this.MasterForm.LoadCompanies();
-			
-			
-
+			this.MasterForm.LoadCompanies();	
 		}
+
 		public int SendId()
 		{
 			return this.id;
@@ -110,6 +100,10 @@ namespace Veresiye.UI
 			this.Hide();
 		}
 
+		private void BtnAddActivity_Click(object sender, EventArgs e)
+		{
+			frmActivityAdd.Show();
+		}
 		private void BtnEditActivity_Click(object sender, EventArgs e)
 		{
 			if (this.dgvActivity.SelectedRows.Count > 0)
@@ -124,19 +118,24 @@ namespace Veresiye.UI
 			}
 		}
 
-		private void BtnAddActivity_Click(object sender, EventArgs e)
-		{
-			frmActivityAdd.Show();
-		}
-
 		private void BtnDeleteActivity_Click(object sender, EventArgs e)
 		{
+			
 			if (this.dgvActivity.SelectedRows.Count>0)
 			{
-				var activityid = int.Parse(this.dgvActivity.SelectedRows[0].Cells[0].Value.ToString());
-				activityService.Delete(activityid);
-				//LoadActivities();
+				var result = MessageBox.Show("Bu İşlemi Silmek İstediğinize Emin Misiniz ?", "İşlem Silme", MessageBoxButtons.YesNo); ;
+				
+				if (result==DialogResult.Yes)
+				{
+					var activityid = int.Parse(this.dgvActivity.SelectedRows[0].Cells[0].Value.ToString());
+					activityService.Delete(activityid);
+					LoadActivities();
+				}				
 			}
+		}
+		private void BtnQuit_Click(object sender, EventArgs e)
+		{
+			this.Hide();
 		}
 	}
 }

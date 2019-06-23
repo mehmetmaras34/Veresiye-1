@@ -26,10 +26,10 @@ namespace Veresiye.UI
 			InitializeComponent();
 		}
 
-		private void BtnQuit_Click(object sender, EventArgs e)
+		private void FrmCompanyAdd_Load(object sender, EventArgs e)
 		{
-			this.Hide();
-		}
+
+		}		
 
 		private void BtnSave_Click(object sender, EventArgs e)
 		{
@@ -63,12 +63,7 @@ namespace Veresiye.UI
 
 			MessageBox.Show("Firma Başarıyla Eklendi");
 			this.MasterForm.LoadCompanies();
-		}
-
-		private void FrmCompanyAdd_Load(object sender, EventArgs e)
-		{
-			this.FormClosing += FrmCompanyAdd_FormClosing;
-		}
+		}		
 
 		private void FrmCompanyAdd_FormClosing(object sender, FormClosingEventArgs e)
 		{
@@ -84,7 +79,10 @@ namespace Veresiye.UI
 			txtRegion.Clear();
 		}
 
-		
+		private void BtnQuit_Click(object sender, EventArgs e)
+		{
+			this.Hide();
+		}
 	}
 }
 
