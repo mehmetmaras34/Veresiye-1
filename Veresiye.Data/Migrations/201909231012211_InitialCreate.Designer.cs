@@ -13,7 +13,7 @@ namespace Veresiye.Data.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201906190743394_InitialCreate"; }
+            get { return "201909231012211_InitialCreate"; }
         }
         
         string IMigrationMetadata.Source
